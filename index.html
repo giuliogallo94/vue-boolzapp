@@ -53,20 +53,27 @@
             placeholder="Cerca o inizia una nuova chat"
             name="search" />
         </div>
+
+        <!-- CONTACTS -->
         <div class="contacts">
-          <div class="contact">
+          <!-- Applico il v-for al div del singolo contatto -->
+          <div v-for="(value, index) in contactList" class="contact">
             <div class="contact-logo">
-              <img src="assets/img/avatar_1.jpg" alt="Avatar Michele" />
+              <img :src="`assets/img/avatar${value.avatar}.jpg`" alt="Avatar" />
             </div>
             <div class="contact-info">
               <h3>
-                <span class="contact-name">Michele</span>
+                <span class="contact-name">{{ value.name }}</span>
                 <span class="time">16:15</span>
               </h3>
               <small>Lorem ipsum dolor sit amet</small>
             </div>
           </div>
-          <div class="contact">
+          <!-- v-for -->
+
+          <!-- **************************** -->
+
+          <!-- <div class="contact">
             <div class="contact-logo">
               <img src="assets/img/avatar_2.jpg" alt="Avatar Fabio" />
             </div>
@@ -149,8 +156,12 @@
               </h3>
               <small>Lorem ipsum dolor sit amet</small>
             </div>
-          </div>
+          </div> -->
+
+          <!-- ************** -->
         </div>
+
+        <!-- CONTACTS -->
       </div>
       <!-- /contenitore sx -->
       <!-- contenitore dx -->
@@ -170,26 +181,32 @@
           </div>
         </div>
         <div class="right-messages-container">
+          <!-- SPAZIO CHAT -->
+
           <div class="right-messages">
-            <div class="message sent">
-              <div class="message-inner">
-                <span class="message-text">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Quaerat eos blanditiis architecto expedita aspernatur quasi,
-                  et nobis aut officiis soluta voluptates nesciunt voluptate
-                  ipsa fuga rerum doloribus, unde laboriosam doloremque?
-                </span>
-                <div class="message-options">
-                  <i class="fa fa-chevron-down"></i>
-                  <div class="message-options-panel">
-                    <div class="message-info">Info messaggio</div>
-                    <div class="message-destroy">Cancella messaggio</div>
+            <!-- v-for chat -->
+            <div v-for="(value, index) in chat" :key="value.messages">
+              <div
+                v-for="value in value.messages"
+                :class="`message ${value.status}`">
+                <div class="message-inner">
+                  <span class="message-text"> {{ value.message }} </span>
+                  <div class="message-options">
+                    <i class="fa fa-chevron-down"></i>
+                    <div class="message-options-panel">
+                      <div class="message-info">Info messaggio</div>
+                      <div class="message-destroy">Cancella messaggio</div>
+                    </div>
                   </div>
                 </div>
+                <span class="message-time">{{ value.date }}</span>
               </div>
-              <span class="message-time">16:13</span>
             </div>
-            <div class="message received">
+            <!-- V-for chat -->
+
+            <!-- ************* -->
+
+            <!-- <div class="message received">
               <div class="message-inner">
                 <span class="message-text">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -206,14 +223,21 @@
                 </div>
               </div>
               <span class="message-time">16:15</span>
-            </div>
+            </div> -->
+
+            <!-- ************* -->
           </div>
+
+          <!-- //SPAZIO CHAT -->
         </div>
         <div class="right-footer">
           <div class="right-footer-icon">
             <i class="far fa-smile"></i>
           </div>
-          <input class="new-message-inputs" placeholder="Scrivi un messaggio" />
+          <input
+            class="new-message-inputs"
+            placeholder="Scrivi un messaggio"
+            v-model="msgToSend" />
           <div class="right-footer-icon">
             <i class="fa fa-microphone" aria-hidden="true"></i>
           </div>
