@@ -28,6 +28,13 @@ const app = createApp({
       });
       this.msgToSend = "";
       console.log(messagesList);
+      setTimeout(() => {
+        messagesList.push({
+          date: "",
+          message: "ciao",
+          status: "received",
+        });
+      }, 1000);
     },
   },
 });
