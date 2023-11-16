@@ -9,10 +9,14 @@ const app = createApp({
       msgToSend: "",
       date: "",
       chat: contacts,
+      indexUser: "0",
     };
   },
 
   methods: {
+    showActiveChat(index) {
+      this.indexUser = index;
+    },
     // sendMsg: function () {
     //   let chat = this.contactList[0].messages;
     //   //   console.log(chat);

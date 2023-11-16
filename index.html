@@ -57,7 +57,10 @@
         <!-- CONTACTS -->
         <div class="contacts">
           <!-- Applico il v-for al div del singolo contatto -->
-          <div v-for="(value, index) in contactList" class="contact">
+          <div
+            v-for="(value, index) in contactList"
+            class="contact"
+            @click="showActiveChat(index)">
             <div class="contact-logo">
               <img :src="`assets/img/avatar${value.avatar}.jpg`" alt="Avatar" />
             </div>
@@ -185,22 +188,20 @@
 
           <div class="right-messages">
             <!-- v-for chat -->
-            <div v-for="(value, index) in chat" :key="value.messages">
-              <div
-                v-for="value in value.messages"
-                :class="`message ${value.status}`">
-                <div class="message-inner">
-                  <span class="message-text"> {{ value.message }} </span>
-                  <div class="message-options">
-                    <i class="fa fa-chevron-down"></i>
-                    <div class="message-options-panel">
-                      <div class="message-info">Info messaggio</div>
-                      <div class="message-destroy">Cancella messaggio</div>
-                    </div>
+            <div
+              v-for="msg in chat[indexUser].messages"
+              :class="`message ${msg.status}`">
+              <div class="message-inner">
+                <span class="message-text"> {{ msg.message }} </span>
+                <div class="message-options">
+                  <i class="fa fa-chevron-down"></i>
+                  <div class="message-options-panel">
+                    <div class="message-info">Info messaggio</div>
+                    <div class="message-destroy">Cancella messaggio</div>
                   </div>
                 </div>
-                <span class="message-time">{{ value.date }}</span>
               </div>
+              <span class="message-time">{{ msg.date }}</span>
             </div>
             <!-- V-for chat -->
 
