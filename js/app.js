@@ -3,6 +3,7 @@ const { createApp } = Vue;
 const app = createApp({
   data() {
     console.log(contacts[0].messages);
+    console.log(contacts[0].messages[contacts[0].messages.length - 1].message);
     return {
       contactList: contacts,
       msgToSend: "",
@@ -10,6 +11,9 @@ const app = createApp({
       chat: contacts,
       indexChat: "0",
       searchName: "",
+      //   lastMessageIndex:
+      // contacts[indexChat].messages[contacts[indexChat].messages.length - 1]
+      //   .message,
     };
   },
 
@@ -39,9 +43,10 @@ const app = createApp({
       }, 1000);
     },
     deleteMsg: function (index) {
-      console.log("cancella");
+      //   console.log("cancella");
       this.contactList[this.indexChat].messages.splice(index, 1);
     },
+
     // searchContact() {
     //   let searchText = this.searchName.toLowerCase();
     //   this.contactList.forEach((name) => {

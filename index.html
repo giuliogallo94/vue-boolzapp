@@ -69,9 +69,16 @@
             <div class="contact-info">
               <h3>
                 <span class="contact-name">{{ value.name }}</span>
-                <span class="time">16:15</span>
+                <span class="time"
+                  >{{ value.messages[value.messages.length - 1].date }}</span
+                >
               </h3>
-              <small>Lorem ipsum dolor sit amet</small>
+              <small
+                >{{ value.messages[value.messages.length - 1].message }}</small
+              >
+              <!-- <small
+                >{{ value[index].messages[value[index].messages.length -
+                1].message }}</small> -->
             </div>
           </div>
           <!-- v-for -->
@@ -180,7 +187,8 @@
             <h3>
               <span id="header-right-contact-name">{{value.name}}</span> <br />
               <small class="time"
-                >Ultimo accesso {{value.messages[0].date}}</small
+                >Ultimo accesso {{ value.messages[value.messages.length -
+                1].date }}</small
               >
             </h3>
           </div>
