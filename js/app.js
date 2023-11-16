@@ -2,7 +2,7 @@ const { createApp } = Vue;
 
 const app = createApp({
   data() {
-    // console.log(contacts[1].messages);
+    // console.log(contacts[0].messages[this.length - 1].date);
 
     return {
       contactList: contacts,
@@ -10,6 +10,7 @@ const app = createApp({
       date: "",
       chat: contacts,
       indexUser: "0",
+      //   lastAcces: contacts[indexUser].messages,
     };
   },
 
