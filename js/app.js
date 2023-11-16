@@ -10,14 +10,16 @@ const app = createApp({
       date: "",
       chat: contacts,
       indexChat: "0",
-      //   lastAcces: contacts[indexChat].messages,
+      searchName: "",
     };
   },
 
   methods: {
-    showActiveChat(index) {
+    // Funzione per indicare a seguito del click quale chat visualizzare
+    showActiveChat: function (index) {
       this.indexChat = index;
     },
+    // Funzione che permette di inviare messaggi e ricevere una risposta
     sendMsg: function () {
       console.log("ciao");
       let messagesList = this.contactList[this.indexChat].messages;
@@ -36,6 +38,19 @@ const app = createApp({
         });
       }, 1000);
     },
+    // deleteMsg: function() {
+
+    // },
+    // searchContact() {
+    //   let searchText = this.searchName.toLowerCase();
+    //   this.contactList.forEach((name) => {
+    //     if (name.name.toLowerCase().includes(searchText)) {
+    //       name.visible = true;
+    //     } else {
+    //       name.visible = false;
+    //     }
+    //   });
+    // },
   },
 });
 

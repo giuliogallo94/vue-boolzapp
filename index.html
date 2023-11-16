@@ -51,7 +51,8 @@
             id="contacts-filter"
             class="left-searchbar-input"
             placeholder="Cerca o inizia una nuova chat"
-            name="search" />
+            name="search"
+            v-model="searchName" />
         </div>
 
         <!-- CONTACTS -->
@@ -59,6 +60,7 @@
           <!-- Applico il v-for al div del singolo contatto -->
           <div
             v-for="(value, index) in contactList"
+            v-show="value.name.toLowerCase().includes(searchName.toLowerCase())"
             class="contact"
             @click="showActiveChat(index)">
             <div class="contact-logo">
