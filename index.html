@@ -171,7 +171,7 @@
       <div class="right">
         <div
           v-for="(value, index) in contactList"
-          v-show="index == indexUser"
+          v-show="index == indexChat"
           class="header-right">
           <div class="header-right-logo">
             <img :src="`assets/img/avatar${value.avatar}.jpg`" alt="" />
@@ -194,7 +194,7 @@
           <div class="right-messages">
             <!-- v-for chat -->
             <div
-              v-for="msg in chat[indexUser].messages"
+              v-for="msg in chat[indexChat].messages"
               :class="`message ${msg.status}`">
               <div class="message-inner">
                 <span class="message-text"> {{ msg.message }} </span>
@@ -236,7 +236,7 @@
 
           <!-- //SPAZIO CHAT -->
         </div>
-        <div class="right-footer">
+        <div class="right-footer" @keyup.enter="sendMsg">
           <div class="right-footer-icon">
             <i class="far fa-smile"></i>
           </div>
