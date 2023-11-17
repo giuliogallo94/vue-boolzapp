@@ -3,12 +3,15 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- FONT LINK -->
     <link
       href="https://fonts.googleapis.com/css?family=Lato"
       rel="stylesheet" />
+    <!-- FONTAWESOM LINK -->
     <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" />
+    <!-- CSS LINKS -->
     <link rel="stylesheet" href="assets/css/style.css" />
     <link
       rel="stylesheet"
@@ -22,8 +25,9 @@
   </head>
   <body>
     <div id="app" class="container">
-      <!-- contenitore sx -->
+      <!-- LEFT SIDE APP -->
       <div class="left">
+        <!-- SETTINGS  -->
         <div class="header-left">
           <div class="header-left-logo">
             <img src="assets/img/avatar_io.jpg" alt="Mio avatar" />
@@ -34,6 +38,8 @@
             <i class="fas fa-ellipsis-v"></i>
           </div>
         </div>
+        <!-- //SETTINGS  -->
+        <!-- DISCLAIMER -->
         <div class="left-disclaimer">
           <div class="left-disclaimer-logo">
             <i class="fa fa-bell-slash" aria-hidden="true"></i>
@@ -43,6 +49,9 @@
             <a href="#">Attiva notifiche desktop</a>
           </div>
         </div>
+        <!-- //DISCLAIMER -->
+
+        <!-- SEARCHBAR -->
         <div class="left-searchbar">
           <label class="search-label" for="search">
             <i class="fa fa-search" aria-hidden="true"></i>
@@ -54,13 +63,14 @@
             name="search"
             v-model="searchName" />
         </div>
-
+        <!-- //SEARCHBAR -->
         <!-- CONTACTS -->
         <div class="contacts">
-          <!-- Applico il v-for al div del singolo contatto -->
+          <!-- CONTACT PREVIEW -->
+
           <div
             v-for="(value, index) in contactList"
-            v-show="value.name.toLowerCase().includes(searchName.toLowerCase())"
+            v-show="searchContact(value.name)"
             class="contact"
             @click="showActiveChat(index)">
             <div class="contact-logo">
@@ -79,103 +89,15 @@
               >
             </div>
           </div>
-          <!-- v-for -->
-
-          <!-- **************************** -->
-
-          <!-- <div class="contact">
-            <div class="contact-logo">
-              <img src="assets/img/avatar_2.jpg" alt="Avatar Fabio" />
-            </div>
-            <div class="contact-info">
-              <h3>
-                <span class="contact-name">Fabio</span>
-                <span class="time">16:05</span>
-              </h3>
-              <small>Lorem ipsum dolor sit amet</small>
-            </div>
-          </div>
-          <div class="contact">
-            <div class="contact-logo">
-              <img src="assets/img/avatar_3.jpg" alt="Avatar Samuele" />
-            </div>
-            <div class="contact-info">
-              <h3>
-                <span class="contact-name">Samuele</span>
-                <span class="time">16:03</span>
-              </h3>
-              <small>Lorem ipsum dolor sit amet</small>
-            </div>
-          </div>
-          <div class="contact">
-            <div class="contact-logo">
-              <img src="assets/img/avatar_4.jpg" alt="Avatar Alessandro B." />
-            </div>
-            <div class="contact-info">
-              <h3>
-                <span class="contact-name">Alessandro B.</span>
-                <span class="time">15:50</span>
-              </h3>
-              <small>Lorem ipsum dolor sit amet</small>
-            </div>
-          </div>
-          <div class="contact">
-            <div class="contact-logo">
-              <img src="assets/img/avatar_5.jpg" alt="Avatar Alessandro L." />
-            </div>
-            <div class="contact-info">
-              <h3>
-                <span class="contact-name">Alessandro L.</span>
-                <span class="time">15:45</span>
-              </h3>
-              <small>Lorem ipsum dolor sit amet</small>
-            </div>
-          </div>
-          <div class="contact">
-            <div class="contact-logo">
-              <img src="assets/img/avatar_6.jpg" alt="Avatar Claudia" />
-            </div>
-            <div class="contact-info">
-              <h3>
-                <span class="contact-name">Claudia</span>
-                <span class="time">15:40</span>
-              </h3>
-              <small>Lorem ipsum dolor sit amet</small>
-            </div>
-          </div>
-          <div class="contact">
-            <div class="contact-logo">
-              <img src="assets/img/avatar_7.jpg" alt="Avatar Federico" />
-            </div>
-            <div class="contact-info">
-              <h3>
-                <span class="contact-name">Federico</span>
-                <span class="time">15:22</span>
-              </h3>
-              <small>Lorem ipsum dolor sit amet</small>
-            </div>
-          </div>
-          <div class="contact">
-            <div class="contact-logo">
-              <img src="assets/img/avatar_8.jpg" alt="Avatar Davide" />
-            </div>
-            <div class="contact-info">
-              <h3>
-                <span class="contact-name">Davide</span>
-                <span class="time">15:15</span>
-              </h3>
-              <small>Lorem ipsum dolor sit amet</small>
-            </div>
-          </div> -->
-
-          <!-- ************** -->
+          <!-- //CONTACT PREVIEW  -->
         </div>
 
-        <!-- CONTACTS -->
+        <!-- //CONTACTS -->
       </div>
-      <!-- /contenitore sx -->
-      <!-- contenitore dx -->
+      <!-- //LEFT SIDE APP -->
+      <!-- RIGHT SIDE APP -->
       <div class="right">
+        <!-- ACTIVE CONTACT INFO -->
         <div
           v-for="(value, index) in contactList"
           v-show="index == indexChat"
@@ -197,11 +119,12 @@
             <i class="fas fa-ellipsis-v"></i>
           </div>
         </div>
-        <div class="right-messages-container">
-          <!-- SPAZIO CHAT -->
+        <!-- //ACTIVE CONTACT INFO -->
 
+        <!-- CHAT SPACE -->
+        <div class="right-messages-container">
           <div class="right-messages">
-            <!-- v-for chat -->
+            <!-- ACTIVE CHAT -->
             <div
               v-for="(msg, index) in chat[indexChat].messages"
               :class="`message ${msg.status}`">
@@ -221,34 +144,11 @@
                 >{{ dateToHoursAndMin(msg.date) }}</span
               >
             </div>
-            <!-- V-for chat -->
-
-            <!-- ************* -->
-
-            <!-- <div class="message received">
-              <div class="message-inner">
-                <span class="message-text">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Quaerat eos blanditiis architecto expedita aspernatur quasi,
-                  et nobis aut officiis soluta voluptates nesciunt voluptate
-                  ipsa fuga rerum doloribus, unde laboriosam doloremque?
-                </span>
-                <div class="message-options">
-                  <i class="fa fa-chevron-down"></i>
-                  <div class="message-options-panel">
-                    <div class="message-info">Info messaggio</div>
-                    <div class="message-destroy">Cancella messaggio</div>
-                  </div>
-                </div>
-              </div>
-              <span class="message-time">16:15</span>
-            </div> -->
-
-            <!-- ************* -->
+            <!-- //ACTIVE CHAT -->
           </div>
-
-          <!-- //SPAZIO CHAT -->
         </div>
+        <!-- //SPAZIO CHAT -->
+        <!-- INPUT CHAT BAR -->
         <div class="right-footer" @keyup.enter="sendMsg">
           <div class="right-footer-icon">
             <i class="far fa-smile"></i>
@@ -261,12 +161,17 @@
             <i class="fa fa-microphone" aria-hidden="true"></i>
           </div>
         </div>
+        <!-- //INPUT CHAT BAR -->
       </div>
-      <!-- /contenitore dx -->
+      <!-- //RIGHT SIDE APP -->
     </div>
+    <!-- LUXON LINK -->
     <script src="https://cdn.jsdelivr.net/npm/luxon@3.4.4/build/global/luxon.min.js"></script>
+    <!-- VUE LINK -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!-- CONTACT DATA LINK -->
     <script src="js/data.js"></script>
+    <!-- MY JS SCRIPT LINK -->
     <script src="js/app.js"></script>
   </body>
 </html>

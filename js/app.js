@@ -16,12 +16,12 @@ const app = createApp({
   },
 
   methods: {
-    // Funzione per indicare a seguito del click quale chat visualizzare
+    // Function to select a single chat by clicking on its preview
     showActiveChat: function (index) {
       this.indexChat = index;
       this.searchName = "";
     },
-    // Funzione che permette di inviare messaggi e ricevere una risposta
+    // Function that able the user to send messages and recive an automatic response
     sendMsg: function () {
       console.log("ciao");
       let messagesList = this.contactList[this.indexChat].messages;
@@ -41,31 +41,26 @@ const app = createApp({
       }, 1000);
     },
 
-    // Funzione per cancellare i messaggi al click dell'apposito div
+    // Function to delete messages
     deleteMsg: function (index) {
       //   console.log("cancella");
       this.contactList[this.indexChat].messages.splice(index, 1);
     },
-    // Funzione per modificare formato data
+    // Functions to format date
     fullDateWoSec: function (fullDate) {
       const luxonDate = dt.fromFormat(fullDate, "dd/MM/yyyy HH:mm:ss");
       return luxonDate.toFormat("dd/MM/yyyy HH:mm");
     },
-    // Funzione per modificare formato data
     dateToHoursAndMin: function (fullDate) {
       const luxonDate = dt.fromFormat(fullDate, "dd/MM/yyyy HH:mm:ss");
       return luxonDate.toFormat("HH:mm");
     },
-    // searchContact() {
-    //   let searchText = this.searchName.toLowerCase();
-    //   this.contactList.forEach((name) => {
-    //     if (name.name.toLowerCase().includes(searchText)) {
-    //       name.visible = true;
-    //     } else {
-    //       name.visible = false;
-    //     }
-    //   });
-    // },
+    // Function to search contact
+    searchContact(contactName) {
+      let searchText = this.searchName.toLowerCase();
+
+      return contactName.toLowerCase().includes(searchText);
+    },
   },
 });
 
