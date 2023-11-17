@@ -1,9 +1,9 @@
 const { createApp } = Vue;
 
+const dt = luxon.DateTime;
+
 const app = createApp({
   data() {
-    console.log(contacts[0].messages);
-    console.log(contacts[0].messages[contacts[0].messages.length - 1].message);
     return {
       contactList: contacts,
       msgToSend: "",
@@ -11,9 +11,7 @@ const app = createApp({
       chat: contacts,
       indexChat: "0",
       searchName: "",
-      //   lastMessageIndex:
-      // contacts[indexChat].messages[contacts[indexChat].messages.length - 1]
-      //   .message,
+      timeNow: dt.now().toFormat("dd/MM/yyyy HH:mm:ss"),
     };
   },
 
@@ -28,25 +26,36 @@ const app = createApp({
       console.log("ciao");
       let messagesList = this.contactList[this.indexChat].messages;
       messagesList.push({
-        date: "",
+        date: this.timeNow,
         message: this.msgToSend,
         status: "sent",
       });
       this.msgToSend = "";
-      console.log(messagesList);
+      // console.log(messagesList);
       setTimeout(() => {
         messagesList.push({
-          date: "",
+          date: timeNow,
           message: "ciao",
           status: "received",
         });
       }, 1000);
     },
+
+    // Funzione per cancellare i messaggi al click dell'apposito div
     deleteMsg: function (index) {
       //   console.log("cancella");
       this.contactList[this.indexChat].messages.splice(index, 1);
     },
-
+    // Funzione per modificare formato data
+    fullDateWoSec: function (fullDate) {
+      const luxonDate = dt.fromFormat(fullDate, "dd/MM/yyyy HH:mm:ss");
+      return luxonDate.toFormat("dd/MM/yyyy HH:mm");
+    },
+    // Funzione per modificare formato data
+    dateToHoursAndMin: function (fullDate) {
+      const luxonDate = dt.fromFormat(fullDate, "dd/MM/yyyy HH:mm:ss");
+      return luxonDate.toFormat("HH:mm");
+    },
     // searchContact() {
     //   let searchText = this.searchName.toLowerCase();
     //   this.contactList.forEach((name) => {

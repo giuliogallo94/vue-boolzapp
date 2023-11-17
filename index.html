@@ -70,15 +70,13 @@
               <h3>
                 <span class="contact-name">{{ value.name }}</span>
                 <span class="time"
-                  >{{ value.messages[value.messages.length - 1].date }}</span
+                  >{{ dateToHoursAndMin(value.messages[value.messages.length -
+                  1].date) }}</span
                 >
               </h3>
               <small
                 >{{ value.messages[value.messages.length - 1].message }}</small
               >
-              <!-- <small
-                >{{ value[index].messages[value[index].messages.length -
-                1].message }}</small> -->
             </div>
           </div>
           <!-- v-for -->
@@ -187,8 +185,9 @@
             <h3>
               <span id="header-right-contact-name">{{value.name}}</span> <br />
               <small class="time"
-                >Ultimo accesso {{ value.messages[value.messages.length -
-                1].date }}</small
+                >Ultimo accesso {{
+                fullDateWoSec(value.messages[value.messages.length - 1].date)
+                }}</small
               >
             </h3>
           </div>
@@ -218,7 +217,9 @@
                   </div>
                 </div>
               </div>
-              <span class="message-time">{{ msg.date }}</span>
+              <span class="message-time"
+                >{{ dateToHoursAndMin(msg.date) }}</span
+              >
             </div>
             <!-- V-for chat -->
 
@@ -263,7 +264,7 @@
       </div>
       <!-- /contenitore dx -->
     </div>
-
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3.4.4/build/global/luxon.min.js"></script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="js/data.js"></script>
     <script src="js/app.js"></script>
