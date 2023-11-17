@@ -35,7 +35,21 @@
           <div class="header-left-icons">
             <i class="fas fa-circle-notch"></i>
             <i class="fas fa-comment-alt"></i>
-            <i class="fas fa-ellipsis-v"></i>
+            <div class="background-options">
+              <i class="fas fa-ellipsis-v"></i>
+              <div class="background-options-panel">
+                <h5>Scegli sfondo</h5>
+                <div class="picture-choose">
+                  <div
+                    v-for="(img, imgIndex) in backgrounds"
+                    class="single-background"
+                    @click="changeBg(img)"
+                    @key="img">
+                    <img :src="`assets/img/backgrounds/${img}`" alt="" />
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <!-- //SETTINGS  -->
@@ -126,7 +140,8 @@
 
         <!-- CHAT SPACE -->
         <div class="right-messages-container">
-          <div class="right-messages">
+          <div class="right-messages" :style="{ 'background-image': newBg }">
+         
             <!-- ACTIVE CHAT -->
             <div
               v-for="(msg, index) in chat[indexChat].messages"

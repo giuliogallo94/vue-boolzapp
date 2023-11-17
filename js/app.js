@@ -5,6 +5,7 @@ const dt = luxon.DateTime;
 const app = createApp({
   data() {
     return {
+      backgrounds: ["bg_01.jpeg", "bg_02.jpeg", "bg_03.jpeg"],
       contactList: contacts,
       msgToSend: "",
       date: "",
@@ -12,6 +13,8 @@ const app = createApp({
       indexChat: "0",
       searchName: "",
       timeNow: dt.now().toFormat("dd/MM/yyyy HH:mm:ss"),
+      bgUrl: document.querySelector(".right-messages"),
+      newBg: "",
     };
   },
 
@@ -34,7 +37,7 @@ const app = createApp({
       // console.log(messagesList);
       setTimeout(() => {
         messagesList.push({
-          date: timeNow,
+          date: this.timeNow,
           message: "ciao",
           status: "received",
         });
@@ -58,10 +61,16 @@ const app = createApp({
     },
 
     // Function to search contact
-    searchContact(contactName) {
+    searchContact: function (contactName) {
       let searchText = this.searchName.toLowerCase();
 
       return contactName.toLowerCase().includes(searchText);
+    },
+
+    // Function to change chat background
+    changeBg: function (value) {
+      this.newBg = `url(assets/img/backgrounds/${value})`;
+      // console.log(this.newBg);
     },
   },
 });
