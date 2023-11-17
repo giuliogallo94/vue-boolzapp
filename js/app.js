@@ -12,8 +12,6 @@ const app = createApp({
       chat: contacts,
       indexChat: "0",
       searchName: "",
-      timeNow: dt.now().toFormat("dd/MM/yyyy HH:mm:ss"),
-      bgUrl: document.querySelector(".right-messages"),
       newBg: "",
     };
   },
@@ -27,9 +25,10 @@ const app = createApp({
     // Function that able the user to send messages and recive an automatic response
     sendMsg: function () {
       console.log("ciao");
+      let timeNow = dt.now().toFormat("dd/MM/yyyy HH:mm:ss");
       let messagesList = this.contactList[this.indexChat].messages;
       messagesList.push({
-        date: this.timeNow,
+        date: timeNow,
         message: this.msgToSend,
         status: "sent",
       });
@@ -37,7 +36,7 @@ const app = createApp({
       // console.log(messagesList);
       setTimeout(() => {
         messagesList.push({
-          date: this.timeNow,
+          date: timeNow,
           message: "ciao",
           status: "received",
         });
