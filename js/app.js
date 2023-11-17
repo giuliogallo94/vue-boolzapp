@@ -72,6 +72,9 @@ const app = createApp({
       this.newBg = `url(assets/img/backgrounds/${value})`;
       // console.log(this.newBg);
     },
+    resetBg: function () {
+      this.newBg = "url(assets/img/backgrounds/mine.jpg)";
+    },
   },
 });
 

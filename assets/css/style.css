@@ -108,7 +108,7 @@ body {
   right: 15px;
   top: 50px;
   width: 320px;
-  height: 130px;
+  height: 150px;
   padding: 0.5rem;
   background: white;
   display: flex;
@@ -116,6 +116,20 @@ body {
   /* justify-content: center; */
   align-items: center;
   box-shadow: 0px 0px 40px -15px rgba(0, 0, 0, 0.75);
+}
+
+.reset-bg {
+  font-size: xx-small;
+  margin-left: 80px;
+}
+
+.reset-bg h7:hover {
+  color: red;
+}
+
+.bg-option {
+  display: flex;
+  justify-content: end;
 }
 
 .left .header-left .background-options:hover > .background-options-panel {
@@ -130,10 +144,6 @@ body {
   text-align: center;
 }
 
-.left .header-left .background-options-panel > div:hover {
-  color: #6b7376;
-}
-
 .picture-choose {
   display: flex;
   justify-content: space-between;
@@ -144,7 +154,6 @@ body {
 .picture-choose img {
   width: 70px;
   height: 70px;
-  box-shadow: 0px 0px 40px -15px rgba(189, 186, 186, 0.75);
 }
 
 .picture-choose img:hover {
@@ -152,10 +161,9 @@ body {
   height: 150px;
 }
 
-img:hover .background-options-panel {
-  /* background-color: black; */
+/* .background-options-panel img:hover {
   height: 250px;
-}
+} */
 
 /* DISCLAIMER */
 .left-disclaimer {
@@ -310,7 +318,7 @@ img:hover .background-options-panel {
   height: 100%;
   width: 100%;
   padding: 5% 10%;
-  background-image: url("../img/mine.jpg");
+  background-image: url("../img/backgrounds/mine.jpg");
   overflow-y: scroll;
 }
 

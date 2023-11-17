@@ -38,7 +38,14 @@
             <div class="background-options">
               <i class="fas fa-ellipsis-v"></i>
               <div class="background-options-panel">
-                <h5>Scegli sfondo</h5>
+                <div class="bg-option">
+                  <div class="title">
+                    <h4>Scegli sfondo</h4>
+                  </div>
+                  <div class="reset-bg">
+                    <h7 @click="resetBg">Reset</h7>
+                  </div>
+                </div>
                 <div class="picture-choose">
                   <div
                     v-for="(img, imgIndex) in backgrounds"
@@ -141,7 +148,6 @@
         <!-- CHAT SPACE -->
         <div class="right-messages-container">
           <div class="right-messages" :style="{ 'background-image': newBg }">
-         
             <!-- ACTIVE CHAT -->
             <div
               v-for="(msg, index) in chat[indexChat].messages"
