@@ -46,6 +46,7 @@ const app = createApp({
       //   console.log("cancella");
       this.contactList[this.indexChat].messages.splice(index, 1);
     },
+
     // Functions to format date
     fullDateWoSec: function (fullDate) {
       const luxonDate = dt.fromFormat(fullDate, "dd/MM/yyyy HH:mm:ss");
@@ -55,6 +56,7 @@ const app = createApp({
       const luxonDate = dt.fromFormat(fullDate, "dd/MM/yyyy HH:mm:ss");
       return luxonDate.toFormat("HH:mm");
     },
+
     // Function to search contact
     searchContact(contactName) {
       let searchText = this.searchName.toLowerCase();

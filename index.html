@@ -79,12 +79,14 @@
             <div class="contact-info">
               <h3>
                 <span class="contact-name">{{ value.name }}</span>
-                <span class="time"
+
+                <span v-if="value.messages.length" class="time"
                   >{{ dateToHoursAndMin(value.messages[value.messages.length -
                   1].date) }}</span
                 >
               </h3>
-              <small
+
+              <small v-if="value.messages.length"
                 >{{ value.messages[value.messages.length - 1].message }}</small
               >
             </div>
@@ -106,7 +108,8 @@
             <img :src="`assets/img/avatar${value.avatar}.jpg`" alt="" />
             <h3>
               <span id="header-right-contact-name">{{value.name}}</span> <br />
-              <small class="time"
+
+              <small v-if="value.messages.length" class="time"
                 >Ultimo accesso {{
                 fullDateWoSec(value.messages[value.messages.length - 1].date)
                 }}</small
