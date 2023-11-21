@@ -53,6 +53,16 @@ const app = createApp({
       this.contactList[this.indexChat].messages.splice(index, 1);
     },
 
+    // Function to cut message on preview
+    cutMessage: function (message) {
+      if (message.length > 20) {
+        const messagePreview = message.substring(0, 20) + "...";
+        return messagePreview;
+      } else {
+        return message;
+      }
+    },
+
     // Functions to format date
     fullDateWoSec: function (fullDate) {
       const luxonDate = dt.fromFormat(fullDate, "dd/MM/yyyy HH:mm:ss");
