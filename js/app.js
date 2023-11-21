@@ -33,15 +33,18 @@ const app = createApp({
           status: "sent",
         });
         this.msgToSend = "";
-        // console.log(messagesList);
-        setTimeout(() => {
-          messagesList.push({
-            date: dt.now().toFormat("dd/MM/yyyy HH:mm:ss"),
-            message: "ciao",
-            status: "received",
-          });
-        }, 1000);
+        this.recieveReply(this.indexChat);
       }
+    },
+
+    recieveReply: function (replyIndex) {
+      setTimeout(() => {
+        this.contactList[replyIndex].messages.push({
+          date: dt.now().toFormat("dd/MM/yyyy HH:mm:ss"),
+          message: "ciao",
+          status: "received",
+        });
+      }, 1000);
     },
 
     // Function to delete messages
