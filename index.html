@@ -121,19 +121,22 @@
       <!-- RIGHT SIDE APP -->
       <div class="right">
         <!-- ACTIVE CONTACT INFO -->
-        <div
-          v-for="(value, index) in contactList"
-          v-show="index == indexChat"
-          class="header-right">
-          <div class="header-right-logo">
-            <img :src="`assets/img/avatar${value.avatar}.jpg`" alt="" />
-            <h3>
-              <span id="header-right-contact-name">{{value.name}}</span> <br />
 
-              <small v-if="value.messages.length" class="time"
+        <div class="header-right">
+          <div class="header-right-logo">
+            <img
+              :src="`assets/img/avatar${contactList[indexChat].avatar}.jpg`"
+              alt="" />
+            <h3>
+              <span id="header-right-contact-name"
+                >{{contactList[indexChat].name}}</span
+              >
+              <br />
+
+              <small v-if="contactList[indexChat].messages.length" class="time"
                 >Ultimo accesso {{
-                fullDateWoSec(value.messages[value.messages.length - 1].date)
-                }}</small
+                fullDateWoSec(contactList[indexChat].messages[contactList[indexChat].messages.length
+                - 1].date) }}</small
               >
             </h3>
           </div>
