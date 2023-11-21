@@ -43,7 +43,7 @@
                     <h4>Scegli sfondo</h4>
                   </div>
                   <div class="reset-bg">
-                    <h7 @click="resetBg">Reset</h7>
+                    <h6 @click="resetBg">Reset</h6>
                   </div>
                 </div>
                 <div class="picture-choose">
@@ -180,7 +180,7 @@
           <input
             class="new-message-inputs"
             placeholder="Scrivi un messaggio"
-            v-model="msgToSend" />
+            v-model.trim="msgToSend" />
           <div class="right-footer-icon">
             <i class="fa fa-microphone" aria-hidden="true"></i>
           </div>

@@ -24,23 +24,24 @@ const app = createApp({
     },
     // Function that able the user to send messages and recive an automatic response
     sendMsg: function () {
-      console.log("ciao");
-      let timeNow = dt.now().toFormat("dd/MM/yyyy HH:mm:ss");
-      let messagesList = this.contactList[this.indexChat].messages;
-      messagesList.push({
-        date: timeNow,
-        message: this.msgToSend,
-        status: "sent",
-      });
-      this.msgToSend = "";
-      // console.log(messagesList);
-      setTimeout(() => {
+      if (this.msgToSend.length > 0) {
+        let timeNow = dt.now().toFormat("dd/MM/yyyy HH:mm:ss");
+        let messagesList = this.contactList[this.indexChat].messages;
         messagesList.push({
           date: timeNow,
-          message: "ciao",
-          status: "received",
+          message: this.msgToSend,
+          status: "sent",
         });
-      }, 1000);
+        this.msgToSend = "";
+        // console.log(messagesList);
+        setTimeout(() => {
+          messagesList.push({
+            date: dt.now().toFormat("dd/MM/yyyy HH:mm:ss"),
+            message: "ciao",
+            status: "received",
+          });
+        }, 1000);
+      }
     },
 
     // Function to delete messages
